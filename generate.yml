@@ -1,0 +1,56 @@
+name: Generate Artifact
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *" # مرة واحدة يوميًا، وقت هادئ
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate artifact
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          cat <<EOF > artifact.md
+# Artifact · Generated
+
+This artifact emerged without urgency.
+
+Timestamp:
+$TIMESTAMP
+
+No demand preceded it.
+No request shaped it.
+
+It exists because continuity was allowed.
+
+— RX-HCM
+EOF
+
+      - name: Update mirror
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          cat <<EOF > mirror.md
+# Mirror · State
+
+Last generation occurred at:
+$TIMESTAMP
+
+No evaluation followed.
+No response was measured.
+
+State remains coherent.
+EOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "rx-hcm-bot"
+          git config user.email "bot@rx-hcm.local"
+          git add artifact.md mirror.md
+          git commit -m "state: artifact generation"
+          git push
