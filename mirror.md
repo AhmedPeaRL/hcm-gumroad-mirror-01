@@ -1,31 +1,9 @@
-# Mirror · State Log
+# Mirror · State
 
-Artifact 0001 exists.
+Last generation occurred at:
+2025-12-18 11:35 UTC
 
-No metrics are attached.
-No engagement is expected.
-No conversion is tracked.
+No evaluation followed.
+No response was measured.
 
-This repository does not optimize output.
-It records presence.
-
-Any interaction occurring outside this structure
-is not considered feedback,
-but coincidence.
-
-Price is undefined.
-Value is non-transitive.
-Scarcity is not enforced.
-
-Distribution is allowed.
-Replication is irrelevant.
-Modification is discouraged by irrelevance, not restriction.
-
-This mirror does not explain the artifact.
-It confirms its persistence.
-
-If attention occurs, it is external.
-If meaning arises, it is local.
-If silence remains, it is sufficient.
-
-— RX-HCM
+State remains coherent.
