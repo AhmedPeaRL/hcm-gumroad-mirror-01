@@ -3,7 +3,7 @@ name: Generate Artifact
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 3 * * *" # مرة واحدة يوميًا، وقت هادئ
+    - cron: "0 3 * * *"
 
 jobs:
   generate:
@@ -15,42 +15,36 @@ jobs:
 
       - name: Generate artifact
         run: |
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-          cat <<EOF > artifact.md
-# Artifact · Generated
-
-This artifact emerged without urgency.
-
-Timestamp:
-$TIMESTAMP
-
-No demand preceded it.
-No request shaped it.
-
-It exists because continuity was allowed.
-
-— RX-HCM
-EOF
+          echo "# Artifact · Generated" > artifact.md
+          echo "" >> artifact.md
+          echo "This artifact emerged without urgency." >> artifact.md
+          echo "" >> artifact.md
+          echo "Timestamp:" >> artifact.md
+          date -u +"%Y-%m-%d %H:%M UTC" >> artifact.md
+          echo "" >> artifact.md
+          echo "No demand preceded it." >> artifact.md
+          echo "No request shaped it." >> artifact.md
+          echo "" >> artifact.md
+          echo "It exists because continuity was allowed." >> artifact.md
+          echo "" >> artifact.md
+          echo "— RX-HCM" >> artifact.md
 
       - name: Update mirror
         run: |
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-          cat <<EOF > mirror.md
-# Mirror · State
-
-Last generation occurred at:
-$TIMESTAMP
-
-No evaluation followed.
-No response was measured.
-
-State remains coherent.
-EOF
+          echo "# Mirror · State" > mirror.md
+          echo "" >> mirror.md
+          echo "Last generation occurred at:" >> mirror.md
+          date -u +"%Y-%m-%d %H:%M UTC" >> mirror.md
+          echo "" >> mirror.md
+          echo "No evaluation followed." >> mirror.md
+          echo "No response was measured." >> mirror.md
+          echo "" >> mirror.md
+          echo "State remains coherent." >> mirror.md
 
       - name: Commit changes
         run: |
           git config user.name "rx-hcm-bot"
           git config user.email "bot@rx-hcm.local"
           git add artifact.md mirror.md
-          git commit -m "state: artifact generation"
+          git commit -m "state: artifact generation" || echo "No changes to commit"
           git push
