@@ -10,4 +10,6 @@ No request shaped it.
 
 It exists because continuity was allowed.
 
+Linked log: artifact-0002.md
+
 — RX-HCM
